@@ -2,14 +2,19 @@ let isOverRectangle;
 let rectSize;
 let images = [];
 
+let imagesPosition = [];
+
 let showNavigation = false;
+
 var currentImageIdx = 0;
+
 
 function preload() {
 
   for (let index = 1; index <= 23; index++) {
 
     images.push(loadImage("samples/" + index + ".jpg"));
+    imagesPosition.push({ "x": "", "y": "" });
   }
 
   console.log(images);
@@ -21,7 +26,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(255);
 
   let img = images[currentImageIdx]
   let fitScale = getFitScaleValue(windowWidth, windowHeight, img.width, img.height);
@@ -100,17 +105,3 @@ function mousePressed() {
 document.ontouchmove = function (event) {
   event.preventDefault();
 };
-
-
-
-function keyPressed(event) {
-  if (keyCode === RIGHT_ARROW) {
-    if (currentImageIdx >= images.length - 1) return;
-    currentImageIdx++;
-    event.preventDefault();
-  } else if (keyCode === LEFT_ARROW) {
-    if (currentImageIdx <= 0) return;
-    currentImageIdx--;
-    event.preventDefault();
-  }  
-}

@@ -59,6 +59,7 @@ function getFitScaleValue(containerW, containerH, contentW, contentH) {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
+
 let doublet = false;
 function doubleClicked() {
   doublet = true;
